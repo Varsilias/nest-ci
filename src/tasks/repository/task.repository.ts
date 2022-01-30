@@ -1,11 +1,11 @@
 /* eslint-disable */
 
-import { retry } from "rxjs";
+import { User } from "src/auth/users/entities/user.entity";
 import { EntityRepository, Repository } from "typeorm";
-import { CreateTaskDto } from "./dto/create-task.dto";
-import { GetTasksFilterDto } from "./dto/get-task-filter.dto";
-import { Task } from "./task.entity";
-import { TaskStatus } from "./types/task-status.type";
+import { CreateTaskDto } from "../dto/create-task.dto";
+import { GetTasksFilterDto } from "../dto/get-task-filter.dto";
+import { Task } from "../entities/task.entity";
+import { TaskStatus } from "../types/task-status.type";
 
 @EntityRepository(Task)
 export class TasksRepository extends Repository<Task> {
@@ -25,7 +25,7 @@ export class TasksRepository extends Repository<Task> {
     return tasks
   }
 
-  async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+  async createTask(createTaskDto: CreateTaskDto, user: User): Promise<Task> {
     const { title, description } = createTaskDto;
     const task = new Task();
     task.title = title;

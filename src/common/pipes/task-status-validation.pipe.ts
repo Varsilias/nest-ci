@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import { BadRequestException, Injectable, PipeTransform } from "@nestjs/common";
-import { TaskStatus } from '../types/task-status.type';
+import { TaskStatus } from '../../tasks/types/task-status.type';
 
 @Injectable()
 export class TaskStatusValidationPipe implements PipeTransform {
