@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SignUpDto, SignInDto } from "./dto";
@@ -8,6 +8,8 @@ import { UserRepository } from './users/repositories/user.repository';
 
 @Injectable()
 export class AuthService {
+  logger = new Logger('AuthService')
+
   constructor(
     @InjectRepository(UserRepository)
     private readonly userRepository: UserRepository,
@@ -26,6 +28,7 @@ export class AuthService {
 
      const payload: JwtPayload = { username };
      const accessToken = this.generateAccessToken(payload)
+     this.logger.debug(`Generated new JWT Token with payload: "${JSON.stringify(payload)}"`)
      return { accessToken }
       
     }
