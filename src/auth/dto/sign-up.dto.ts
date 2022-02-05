@@ -1,6 +1,4 @@
 /* eslint-disable */
-
-/* eslint-disable */
 import { IsEmail, Length, Matches, IsAlphanumeric } from 'class-validator'
 
 export class SignUpDto {

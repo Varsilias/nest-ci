@@ -2,7 +2,7 @@
 
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Generated, Column, OneToMany } from "typeorm";
 import * as bcrypt from 'bcrypt';
-import { Task } from "src/tasks/entities/task.entity";
+import { Task } from "../../../tasks/entities/task.entity";
 
 @Entity()
 export class User extends BaseEntity {

@@ -1,12 +1,14 @@
+/* eslint-disable */
 import { NestFactory } from '@nestjs/core';
-// import { Logger } from '@nestjs/common';
+import { Logger } from '@nestjs/common';
 import { AppModule } from './app.module';
+// import 'dotenv/config';
 
 async function bootstrap() {
-  // const logger = new Logger('Bootstrap function in "main.ts" file');
+  const logger = new Logger('Entry FIle');
   const app = await NestFactory.create(AppModule);
-  const port = 3000;
-  await app.listen(port || 3000);
-  // logger.log(`Application started successfully on port ${port}`);
+  app.enableCors();
+  await app.listen(process.env.PORT || 3000);
+  logger.log(`Application started successfully on port ${process.env.PORT}`);
 }
 bootstrap();
